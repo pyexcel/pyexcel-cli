@@ -28,7 +28,7 @@ KEYWORDS = [
 ]
 
 INSTALL_REQUIRES = [
-    'pyexcel>=0.1.7',
+    'pyexcel>=0.2.3',
     'Click>=5.0',
 ]
 
