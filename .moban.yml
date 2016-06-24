@@ -15,5 +15,5 @@ targets:
   - test.sh: test.sh.jj2
   - test.bat: test.sh.jj2
   - README.rst: README.rst
-  - "docs/source/index.rst": index.rst
+  - "docs/source/index.rst": cli-index.rst.jj2
   - .gitignore: .gitignore.jj2

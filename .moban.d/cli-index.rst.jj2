@@ -3,7 +3,7 @@
 Introduction
 ================================================================================
 
-{%include "cli-feature.rst"%}
+{%include "cli-feature.rst.jj2"%}
 
 Installation
 ================================================================================
@@ -18,5 +18,5 @@ List of plugins
 Command line reference
 ================================================================================
 
-{% include "usage.rst"%}
+{% include "usage.rst.jj2"%}
 
