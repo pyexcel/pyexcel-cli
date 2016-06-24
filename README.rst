@@ -11,6 +11,7 @@ pyexcel-cli - Let you focus on data, instead of file formats
 .. image:: https://readthedocs.org/projects/pyexcel-cli/badge/?version=latest
    :target: http://pyexcel-cli.readthedocs.org/en/latest/
 
+
 **pyexcel-cli** brings `pyexcel <https://github.com/pyexcel/pyexcel>`_ to make it easy
 to consume/produce information stored in excel files on command line interface.
 This library can turn the excel data into a list of lists, a list of records(dictionaries),
@@ -22,7 +23,7 @@ Hightlighted features:
 #. View data in the excel files without Microsoft Office or Open Office
 #. Transcode data among supported excel file formats
 #. Merge files in various excel file formats into one
-#. Split a multi-sheet exce file into single sheet files
+#. Split a multi-sheet excel file into single sheet files
 #. Find difference in data between two excel files
 
 .. _file-format-list:
