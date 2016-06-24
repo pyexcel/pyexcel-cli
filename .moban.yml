@@ -14,6 +14,6 @@ targets:
   - "tests/requirements.txt": "tests/requirements.txt"
   - test.sh: test.sh.jj2
   - test.bat: test.sh.jj2
-  - README.rst: README.rst
+  - README.rst: cli-README.rst.jj2
   - "docs/source/index.rst": cli-index.rst.jj2
   - .gitignore: .gitignore.jj2
