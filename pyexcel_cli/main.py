@@ -1,0 +1,36 @@
+"""
+    pyexcel_cli
+    ~~~~~~~~~~~~~~~~~~~
+
+    command line interface for pyexcel
+
+    :copyright: (c) 2016 by Onni Software Ltd.
+    :license: MIT License, see LICENSE for more details
+
+"""
+import click
+
+from diff import diff
+from view import view
+from split import split
+from merge import merge
+from transcode import transcode
+
+
+@click.group()
+def main():
+    """
+    Read and write data in different excel formats
+
+    file type in pyexcel refers to file formats, e.g. csv, xls
+    """
+    pass
+
+main.add_command(transcode)
+main.add_command(merge)
+main.add_command(split)
+main.add_command(view)
+main.add_command(diff)
+
+if __name__ == '__main__':
+    main()

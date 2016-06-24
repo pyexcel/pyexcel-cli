@@ -1,0 +1,8 @@
+nose
+codecov
+coverage
+flake8
+pyexcel-xls
+pyexcel-xlsx
+pyexcel-ods3
+pyexcel-text

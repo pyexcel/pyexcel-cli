@@ -1,0 +1,10 @@
+overrides: "pyexcel.yaml"
+name: "pyexcel-cli"
+nick_name: cli
+version: 0.1.0
+command_line_interface: pyexcel
+entry_point: pyexcel_cli.main:main
+dependencies:
+  - pyexcel>=0.1.7
+  - Click>=5.0
+description: A command utility to read and write data in csv, tsv, xls, xlsx and ods format.

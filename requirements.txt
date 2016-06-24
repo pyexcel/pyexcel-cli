@@ -1,0 +1,2 @@
+pyexcel>=0.1.7
+Click>=5.0
