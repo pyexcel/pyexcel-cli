@@ -64,9 +64,10 @@ def transcode(source_file_type, output_file_type,
     else:
         params['dest_file_name'] = output
 
-    if output_file_type == 'csv':
+    if output_file_type == 'csv' or output.endswith('csv'):
         if csv_lineterminator is not None:
-            params['dest_line_terminator'] = csv_lineterminator
+            params['dest_lineterminator'] = csv_lineterminator
+            print csv_lineterminator
         if csv_delimiter is not None:
             params['dest_delimiter'] = csv_delimiter
         if csv_no_doublequote:

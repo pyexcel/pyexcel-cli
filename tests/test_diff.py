@@ -19,9 +19,9 @@ def test_difference():
     test_fixture2 = os.path.join("tests", "fixtures", "multiple-sheets.xls")
     result = runner.invoke(diff, [test_fixture, test_fixture2])
     expected = dedent("""
-    --- tests\\fixtures\\transcode_simple.csv
+    --- tests{0}fixtures{0}transcode_simple.csv
 
-    +++ tests\\fixtures\\multiple-sheets.xls
+    +++ tests{0}fixtures{0}multiple-sheets.xls
 
     @@ -1 +1,15 @@
 
@@ -40,5 +40,5 @@ def test_difference():
     +3,2,1
     +4,3,2
     +---pyexcel---""").strip('\n') + '\n'
-    eq_(result.output, expected)
+    eq_(result.output, expected.format(os.sep))
     eq_(result.exit_code, 1)
