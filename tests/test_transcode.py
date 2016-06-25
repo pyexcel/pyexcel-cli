@@ -9,7 +9,8 @@ def test_simple_option():
     test_fixture = os.path.join("tests", "fixtures",
                                 "transcode_simple.csv")
     output = "test_simple_option.csv"
-    result = runner.invoke(transcode, ["--csv-lineterminator", "\n", test_fixture, output])
+    result = runner.invoke(transcode, ["--csv-lineterminator", "\n",
+                                       test_fixture, output])
     print(result.output)
     eq_(result.exit_code, 0)
     with open(output, 'r') as f:
