@@ -11,6 +11,8 @@ import click
 import pyexcel as pe
 from difflib import unified_diff
 
+from pyexcel_cli._shared import get_input_content
+
 
 @click.command(short_help="diff two excel files")
 @click.option('--source-file-type',
@@ -32,7 +34,7 @@ def diff(source_file_type, file_type, source, dest):
     """
     params = {}
     if source == '-':
-        params['file_content'] = sys.stdin.read()
+        params['file_content'] = get_input_content(source_file_type)
         params['file_type'] = source_file_type
     else:
         params['file_name'] = source

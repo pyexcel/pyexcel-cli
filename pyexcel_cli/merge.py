@@ -17,9 +17,14 @@ from pyexcel import get_book
 @click.command(short_help="Merge excel files into one")
 @click.option('--output-file-type',
               help="file type of the stdout if '-' is given")
+@click.option('--csv-delimiter', default=None)
+@click.option('--csv-lineterminator', default=None)
+@click.option('--csv-no-doublequote', default=False, is_flag=True)
 @click.argument('sources', nargs=-1)
 @click.argument('output', nargs=1)
-def merge(output_file_type, sources, output):
+def merge(output_file_type,
+          csv_delimiter, csv_lineterminator, csv_no_doublequote,
+          sources, output):
     """
     Merge excel files in various file formats into one excel file
 
@@ -40,6 +45,15 @@ def merge(output_file_type, sources, output):
         else:
             glob_list.append(source)
 
+    params = {}
+    if output_file_type == 'csv' or output.endswith('csv'):
+        if csv_lineterminator is not None:
+            params['lineterminator'] = csv_lineterminator
+        if csv_delimiter is not None:
+            params['delimiter'] = csv_delimiter
+        if csv_no_doublequote:
+            params['no_doublequote'] = csv_no_doublequote
+
     for afile in _join_the_list(file_list, dir_list, glob_list):
         try:
             book = get_book(file_name=afile)
@@ -49,9 +63,9 @@ def merge(output_file_type, sources, output):
             click.echo("Skipping %s" % afile)
     if merged_book.number_of_sheets() > 0:
         if output == '-':
-            merged_book.save_to_memory(output_file_type, sys.stdout)
+            merged_book.save_to_memory(output_file_type, sys.stdout, **params)
         else:
-            merged_book.save_as(output)
+            merged_book.save_as(output, **params)
     else:
         click.echo("Nothing to be merged")
 

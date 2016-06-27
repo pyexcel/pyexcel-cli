@@ -10,11 +10,11 @@
 """
 import click
 
-from diff import diff
-from view import view
-from split import split
-from merge import merge
-from transcode import transcode
+from pyexcel_cli.diff import diff
+from pyexcel_cli.view import view
+from pyexcel_cli.split import split
+from pyexcel_cli.merge import merge
+from pyexcel_cli.transcode import transcode
 
 
 @click.group()

@@ -9,8 +9,9 @@ def test_simple_option():
     runner = CliRunner()
     file_fixture = os.path.join("tests", "fixtures", "multiple-sheets.xls")
     prefix = "output"
-    runner.invoke(split, ['--output-file-type', 'xlsx',
-                          file_fixture, prefix])
+    result = runner.invoke(split, ['--output-file-type', 'xlsx',
+                                   file_fixture, prefix])
+    eq_(result.exit_code, 0)
     book = get_book(file_name=file_fixture)
     count = 0
     for sheet in book:
@@ -26,11 +27,12 @@ def test_stdin_option():
     file_fixture = os.path.join("tests", "fixtures", "multiple-sheets.xls")
     input_stream = open(file_fixture, "rb")
     prefix = "output"
-    runner.invoke(split,
-                  ['--source-file-type', "xls",
-                   '--output-file-type', 'xlsx',
-                   '-', prefix],
-                  input=input_stream.read())
+    result = runner.invoke(split,
+                           ['--source-file-type', "xls",
+                            '--output-file-type', 'xlsx',
+                            '-', prefix],
+                           input=input_stream.read())
+    eq_(result.exit_code, 0)
     book = get_book(file_name=file_fixture)
     count = 0
     for sheet in book:

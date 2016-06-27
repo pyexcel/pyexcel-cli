@@ -7,8 +7,8 @@
 
 """
 import os
-import sys
 import click
+from pyexcel_cli._shared import get_input_content
 from pyexcel import get_book
 
 
@@ -33,7 +33,7 @@ def split(source_file_type, output_file_type,
     """
     params = {}
     if source == '-':
-        params['file_content'] = sys.stdin.read()
+        params['file_content'] = get_input_content(source_file_type)
         params['file_type'] = source_file_type
     else:
         params['file_name'] = source

@@ -6,9 +6,13 @@
     :license: MIT License, see LICENSE for more details
 
 """
-import sys
 import click
 import pyexcel as pe
+
+from pyexcel_cli._shared import (
+    get_input_content,
+    get_output_stream
+)
 
 
 SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
@@ -52,14 +56,14 @@ def transcode(source_file_type, output_file_type,
     """
     params = {}
     if source == '-':
-        params['file_content'] = sys.stdin.read()
+        params['file_content'] = get_input_content(source_file_type)
         params['file_type'] = source_file_type
     elif source.startswith("http"):
         params['url'] = source
     else:
         params['file_name'] = source
     if output == '-':
-        params['dest_file_stream'] = sys.stdout
+        params['dest_file_stream'] = get_output_stream(output_file_type)
         params['dest_file_type'] = output_file_type
     else:
         params['dest_file_name'] = output
@@ -67,7 +71,6 @@ def transcode(source_file_type, output_file_type,
     if output_file_type == 'csv' or output.endswith('csv'):
         if csv_lineterminator is not None:
             params['dest_lineterminator'] = csv_lineterminator
-            print csv_lineterminator
         if csv_delimiter is not None:
             params['dest_delimiter'] = csv_delimiter
         if csv_no_doublequote:

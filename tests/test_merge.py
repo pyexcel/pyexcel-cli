@@ -40,6 +40,7 @@ def test_stdout_option():
     glob_fixture = os.path.join("tests", "fixtures", "glob_dir", "*")
     output = "-"
     result = runner.invoke(merge, ["--output-file-type", "csv",
+                                   "--csv-lineterminator", "\n",
                                    file_fixture, dir_fixture, glob_fixture,
                                    output])
     eq_(result.exit_code, 0)
