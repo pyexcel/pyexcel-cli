@@ -29,6 +29,7 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
               default=None, type=int,
               help="use a column as row headers")
 @click.option('--csv-delimiter', default=None)
+@click.option('--csv-encoding', default=None)
 @click.option('--csv-lineterminator', default=None)
 @click.option('--csv-no-doublequote', default=False, is_flag=True)
 @click.argument('source')
@@ -36,7 +37,8 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 def view(ctx, source_file_type, output_file_type,
          sheet_name, sheet_index,
          name_columns_by_row, name_rows_by_column,
-         csv_delimiter, csv_lineterminator, csv_no_doublequote,
+         csv_delimiter, csv_encoding,
+         csv_lineterminator, csv_no_doublequote,
          source):
     """
     Simply show the data inside the file
@@ -53,6 +55,7 @@ def view(ctx, source_file_type, output_file_type,
                name_columns_by_row=name_columns_by_row,
                name_rows_by_column=name_rows_by_column,
                csv_delimiter=csv_delimiter,
+               csv_encoding=csv_encoding,
                csv_lineterminator=csv_lineterminator,
                csv_no_doublequote=csv_no_doublequote,
                output='-')

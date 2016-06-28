@@ -58,7 +58,8 @@ def merge(output_file_type,
         try:
             book = get_book(file_name=afile)
             merged_book += book
-            click.echo(".")
+            if output != "-":
+                click.echo(".")
         except NotImplementedError:
             click.echo("Skipping %s" % afile)
     if merged_book.number_of_sheets() > 0:
