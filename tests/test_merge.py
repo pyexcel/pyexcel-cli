@@ -45,9 +45,6 @@ def test_stdout_option():
                                    output])
     eq_(result.exit_code, 0)
     expected = dedent("""
-    .
-    .
-    .
     ---pyexcel:transcode_simple.csv---
     1,2,3
     ---pyexcel---
@@ -59,3 +56,15 @@ def test_stdout_option():
     ---pyexcel---
     """).strip('\n') + '\n'
     eq_(result.output, expected)
+
+
+def test_nothing_do_do():
+    runner = CliRunner()
+    glob_fixture = os.path.join("tests", "fixtures", "nothing_is_excel", "*")
+    output = "test_simple_option.xls"
+    result = runner.invoke(merge, [glob_fixture, output])
+    expected = dedent("""
+    Skipping tests{0}fixtures{0}nothing_is_excel{0}test.no.excel
+    Nothing to be merged""").strip('\n') + '\n'
+    eq_(result.exit_code, 0)
+    eq_(result.output, expected.format(os.sep))
