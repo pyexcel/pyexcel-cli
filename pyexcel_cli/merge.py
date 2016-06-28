@@ -18,12 +18,15 @@ from pyexcel import get_book
 @click.option('--output-file-type',
               help="file type of the stdout if '-' is given")
 @click.option('--csv-delimiter', default=None)
+@click.option('--csv-encoding', default=None)
 @click.option('--csv-lineterminator', default=None)
+@click.option('--csv-quotechar', default=None)
 @click.option('--csv-no-doublequote', default=False, is_flag=True)
 @click.argument('sources', nargs=-1)
 @click.argument('output', nargs=1)
 def merge(output_file_type,
-          csv_delimiter, csv_lineterminator, csv_no_doublequote,
+          csv_delimiter, csv_encoding, csv_quotechar,
+          csv_lineterminator, csv_no_doublequote,
           sources, output):
     """
     Merge excel files in various file formats into one excel file
@@ -49,8 +52,12 @@ def merge(output_file_type,
     if output_file_type == 'csv' or output.endswith('csv'):
         if csv_lineterminator is not None:
             params['lineterminator'] = csv_lineterminator
+        if csv_encoding is not None:
+            params['encoding'] = csv_encoding
         if csv_delimiter is not None:
-            params['delimiter'] = csv_delimiter
+            params['delimiter'] = csv_delimiter.encode('ascii')
+        if csv_quotechar is not None:
+            params['quotechar'] = csv_quotechar.encode('ascii')
         if csv_no_doublequote:
             params['no_doublequote'] = csv_no_doublequote
 

@@ -31,6 +31,3 @@ main.add_command(merge)
 main.add_command(split)
 main.add_command(view)
 main.add_command(diff)
-
-if __name__ == '__main__':
-    main()
