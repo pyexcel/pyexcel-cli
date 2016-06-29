@@ -59,6 +59,23 @@ def test_stdout_option():
     eq_(result.output, expected)
 
 
+def test_more_csv_options():
+    runner = CliRunner()
+    file_fixture = os.path.join("tests", "fixtures", "transcode_quoted.csv")
+    output = "-"
+    result = runner.invoke(merge, ["--output-file-type", "csv",
+                                   "--csv-lineterminator", "\n",
+                                   "--csv-delimiter", ":",
+                                   "--csv-quoting", "minimal",
+                                   file_fixture, output])
+    eq_(result.exit_code, 0)
+    expected = dedent("""
+    hello:|world|:1:2
+    3:4:5:6
+    """).strip('\n') + '\n'
+    eq_(result.output, expected)
+
+
 def test_nothing_do_do():
     runner = CliRunner()
     glob_fixture = os.path.join("tests", "fixtures", "nothing_is_excel", "*")
