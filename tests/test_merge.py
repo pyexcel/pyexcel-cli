@@ -44,7 +44,6 @@ def test_stdout_option():
                                    "--csv-delimiter", ":",
                                    file_fixture, dir_fixture, glob_fixture,
                                    output])
-    print(result.exc_info)
     eq_(result.exit_code, 0)
     expected = dedent("""
     ---pyexcel:transcode_simple.csv---

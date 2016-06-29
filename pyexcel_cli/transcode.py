@@ -11,7 +11,8 @@ import pyexcel as pe
 
 from pyexcel_cli._shared import (
     get_input_content,
-    get_output_stream
+    get_output_stream,
+    _make_csv_params
 )
 
 
@@ -40,6 +41,9 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 @click.option('--csv-delimiter', default=None)
 @click.option('--csv-encoding', default=None)
 @click.option('--csv-lineterminator', default=None)
+@click.option('--csv-quotechar', default=None)
+@click.option('--csv-escapechar', default=None)
+@click.option('--csv-quoting', default=None)
 @click.option('--csv-no-doublequote', default=False, is_flag=True)
 @click.argument('source', nargs=1)
 @click.argument('output', nargs=1)
@@ -47,7 +51,9 @@ def transcode(source_file_type, output_file_type,
               sheet_name, sheet_index,
               name_columns_by_row, name_rows_by_column,
               csv_delimiter, csv_encoding,
-              csv_lineterminator, csv_no_doublequote,
+              csv_lineterminator, csv_quotechar,
+              csv_escapechar, csv_quoting,
+              csv_no_doublequote,
               source, output):
     """
     Trancode an excel file from one format to another.
@@ -71,14 +77,11 @@ def transcode(source_file_type, output_file_type,
         params['dest_file_name'] = output
 
     if output_file_type == 'csv' or output.endswith('csv'):
-        if csv_lineterminator is not None:
-            params['dest_lineterminator'] = csv_lineterminator
-        if csv_encoding is not None:
-            params['dest_encoding'] = csv_encoding
-        if csv_delimiter is not None:
-            params['dest_delimiter'] = csv_delimiter
-        if csv_no_doublequote:
-            params['dest_no_doublequote'] = csv_no_doublequote
+        csv_params = _make_csv_params(
+            csv_lineterminator, csv_encoding, csv_delimiter,
+            csv_quoting, csv_quotechar, csv_escapechar,
+            csv_no_doublequote, prefix="dest_")
+        params.update(csv_params)
 
     sheet_parameters = [sheet_name, sheet_index,
                         name_columns_by_row, name_rows_by_column]

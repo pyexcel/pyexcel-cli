@@ -31,6 +31,9 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 @click.option('--csv-delimiter', default=None)
 @click.option('--csv-encoding', default=None)
 @click.option('--csv-lineterminator', default=None)
+@click.option('--csv-quotechar', default=None)
+@click.option('--csv-escapechar', default=None)
+@click.option('--csv-quoting', default=None)
 @click.option('--csv-no-doublequote', default=False, is_flag=True)
 @click.argument('source')
 @click.pass_context
@@ -38,7 +41,8 @@ def view(ctx, source_file_type, output_file_type,
          sheet_name, sheet_index,
          name_columns_by_row, name_rows_by_column,
          csv_delimiter, csv_encoding,
-         csv_lineterminator, csv_no_doublequote,
+         csv_lineterminator, csv_quotechar,
+         csv_escapechar, csv_quoting, csv_no_doublequote,
          source):
     """
     Simply show the data inside the file
@@ -57,5 +61,8 @@ def view(ctx, source_file_type, output_file_type,
                csv_delimiter=csv_delimiter,
                csv_encoding=csv_encoding,
                csv_lineterminator=csv_lineterminator,
+               csv_quotechar=csv_quotechar,
+               csv_escapechar=csv_escapechar,
+               csv_quoting=csv_quoting,
                csv_no_doublequote=csv_no_doublequote,
                output='-')

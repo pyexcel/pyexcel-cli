@@ -7,12 +7,14 @@
 
 """
 import os
-import csv
 import sys
 import glob
 import click
 from pyexcel.book import Book
 from pyexcel import get_book
+from pyexcel_cli._shared import (
+    _make_csv_params
+)
 
 
 @click.command(short_help="Merge excel files into one")
@@ -54,26 +56,10 @@ def merge(output_file_type,
 
     params = {}
     if output_file_type == 'csv' or output.endswith('csv'):
-        if csv_lineterminator is not None:
-            params['lineterminator'] = csv_lineterminator
-        if csv_encoding is not None:
-            params['encoding'] = csv_encoding
-        if csv_delimiter is not None:
-            params['delimiter'] = _make_single_character(csv_delimiter)
-        if csv_quotechar is not None:
-            params['quotechar'] = _make_single_character(csv_quotechar)
-        if csv_escapechar is not None:
-            params['escapechar'] = _make_single_character(csv_escapechar)
-        if csv_no_doublequote:
-            params['no_doublequote'] = csv_no_doublequote
-        if csv_quoting is None:
-            params['quoting'] = csv.QUOTE_MINIMAL
-        elif csv_quoting == 'none':
-            params['quoting'] = csv.QUOTE_NONE
-        elif csv_quoting == "all":
-            params['quoting'] = csv.QUOTE_ALL
-        elif csv_quoting == "nonnumeric":
-            params['quoting'] = csv.QUOTE_NONNUMERIC
+        params = _make_csv_params(
+            csv_lineterminator, csv_encoding, csv_delimiter,
+            csv_quoting, csv_quotechar, csv_escapechar,
+            csv_no_doublequote)
 
     for afile in _join_the_list(file_list, dir_list, glob_list):
         try:
@@ -102,10 +88,3 @@ def _join_the_list(file_list, dir_list, glob_list):
     for globee in glob_list:
         for afile in glob.iglob(globee):
             yield afile
-
-
-def _make_single_character(single_char_input):
-    if sys.version_info[0] == 2:
-        return single_char_input.encode('ascii')
-    else:
-        return single_char_input[0]
