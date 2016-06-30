@@ -25,6 +25,39 @@ Hightlighted features:
 #. Split a multi-sheet excel file into single sheet files
 #. Find difference in data between two excel files
 
+Usage
+================================================================================
+
+Here is an example usage:
+
+.. code-block:: bash
+
+    $ pyexcel view https://github.com/pyexcel/pyexcel-cli/blob/master/tests/fixtures/multiple-sheets.xls
+	Sheet 1:
+    +---+---+---+
+    | 1 | 2 | 3 |
+    +---+---+---+
+    | 4 | 5 | 6 |
+    +---+---+---+
+    | 7 | 8 | 9 |
+    +---+---+---+
+    Sheet 2:
+    +---+---+---+
+    | X | Y | Z |
+    +---+---+---+
+    | 1 | 2 | 3 |
+    +---+---+---+
+    | 4 | 5 | 6 |
+    +---+---+---+
+    Sheet 3:
+    +---+---+---+
+    | O | P | Q |
+    +---+---+---+
+    | 3 | 2 | 1 |
+    +---+---+---+
+    | 4 | 3 | 2 |
+    +---+---+---+
+
 Installation
 ================================================================================
 
