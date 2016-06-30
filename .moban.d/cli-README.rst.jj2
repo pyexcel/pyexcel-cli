@@ -1,5 +1,10 @@
 {%extends "BASIC-README.rst.jj2"%}
 
+{%block slogan%}
+Let you focus on data at command line, instead of file formats
+{%endblock%}
+
+
 {%block features%}
 
 {%include "cli-feature.rst.jj2" %}

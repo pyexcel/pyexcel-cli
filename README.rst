@@ -1,5 +1,5 @@
 ================================================================================
-pyexcel-cli - Let you focus on data, instead of file formats
+pyexcel-cli - Let you focus on data at command line, instead of file formats
 ================================================================================
 
 .. image:: https://api.travis-ci.org/pyexcel/pyexcel-cli.svg?branch=master
