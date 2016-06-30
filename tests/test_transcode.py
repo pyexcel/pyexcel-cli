@@ -9,7 +9,7 @@ def test_simple_option():
     test_fixture = os.path.join("tests", "fixtures",
                                 "transcode_simple.csv")
     output = "test_simple_option.csv"
-    result = runner.invoke(transcode, ["--csv-lineterminator", "\n",
+    result = runner.invoke(transcode, ["--csv-dest-lineterminator", "\n",
                                        test_fixture, output])
     print(result.output)
     eq_(result.exit_code, 0)
@@ -24,7 +24,7 @@ def test_stdout_option():
     test_fixture = os.path.join("tests", "fixtures",
                                 "transcode_simple.csv")
     result = runner.invoke(transcode, ["--output-file-type", "csv",
-                                       "--csv-lineterminator", "\n",
+                                       "--csv-dest-lineterminator", "\n",
                                        test_fixture, '-'])
     eq_(result.exit_code, 0)
     eq_(result.output, '1,2,3\n')
@@ -34,10 +34,34 @@ def test_stdin_option():
     runner = CliRunner()
     result = runner.invoke(transcode,
                            ["--source-file-type", "csv",
-                            "--csv-lineterminator", "\n",
+                            "--csv-dest-lineterminator", "\n",
                             "--output-file-type", "csv", '-', '-'],
                            input='1,2,3')
     eq_(result.output, '1,2,3\n')
+    eq_(result.exit_code, 0)
+
+
+def test_quoting_char():
+    runner = CliRunner()
+    result = runner.invoke(transcode,
+                           ["--source-file-type", "csv",
+                            "--csv-dest-lineterminator", "\n",
+                            "--csv-dest-quotechar", "|",
+                            "--output-file-type", "csv", '-', '-'],
+                           input='1,"Boris,J",3')
+    eq_(result.output, '1,|Boris,J|,3\n')
+    eq_(result.exit_code, 0)
+
+
+def test_escape_char():
+    runner = CliRunner()
+    result = runner.invoke(transcode,
+                           ["--source-file-type", "csv",
+                            "--csv-source-escapechar", "&",
+                            "--csv-dest-lineterminator", "\n",
+                            "--output-file-type", "csv", '-', '-'],
+                           input='1,"Boris&,J",3')
+    eq_(result.output, '1,"Boris,J",3\n')
     eq_(result.exit_code, 0)
 
 

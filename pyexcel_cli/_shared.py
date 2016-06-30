@@ -5,13 +5,19 @@ from pyexcel.core import get_io_type
 
 
 def get_input_content(file_type):
-    stream = get_stream('stdin', file_type)
+    if sys.version_info[0] == 2:
+        stream = sys.stdin
+    else:
+        stream = get_stream('stdin', file_type)
     content = stream.read()
     return content
 
 
 def get_output_stream(file_type):
-    return get_stream('stdout', file_type)
+    if sys.version_info[0] == 2:
+        return sys.stdout
+    else:
+        return get_stream('stdout', file_type)
 
 
 def get_stream(name, file_type):

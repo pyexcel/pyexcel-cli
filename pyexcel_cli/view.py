@@ -28,41 +28,27 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 @click.option('--name-rows-by-column',
               default=None, type=int,
               help="use a column as row headers")
-@click.option('--csv-delimiter', default=None)
-@click.option('--csv-encoding', default=None)
-@click.option('--csv-lineterminator', default=None)
-@click.option('--csv-quotechar', default=None)
-@click.option('--csv-escapechar', default=None)
-@click.option('--csv-quoting', default=None)
-@click.option('--csv-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-source-delimiter', default=None)
+@click.option('--csv-source-encoding', default=None)
+@click.option('--csv-source-lineterminator', default=None)
+@click.option('--csv-source-quotechar', default=None)
+@click.option('--csv-source-escapechar', default=None)
+@click.option('--csv-source-quoting', default=None)
+@click.option('--csv-source-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-dest-delimiter', default=None)
+@click.option('--csv-dest-encoding', default=None)
+@click.option('--csv-dest-lineterminator', default=None)
+@click.option('--csv-dest-quotechar', default=None)
+@click.option('--csv-dest-escapechar', default=None)
+@click.option('--csv-dest-quoting', default=None)
+@click.option('--csv-dest-no-doublequote', default=False, is_flag=True)
 @click.argument('source')
 @click.pass_context
-def view(ctx, source_file_type, output_file_type,
-         sheet_name, sheet_index,
-         name_columns_by_row, name_rows_by_column,
-         csv_delimiter, csv_encoding,
-         csv_lineterminator, csv_quotechar,
-         csv_escapechar, csv_quoting, csv_no_doublequote,
-         source):
+def view(ctx, **keywords):
     """
     Simply show the data inside the file
 
     \b
     SOURCE: a file name or '-'. '-' tells the command to use stdin
     """
-    ctx.invoke(transcode,
-               source_file_type=source_file_type,
-               output_file_type=output_file_type,
-               source=source,
-               sheet_name=sheet_name,
-               sheet_index=sheet_index,
-               name_columns_by_row=name_columns_by_row,
-               name_rows_by_column=name_rows_by_column,
-               csv_delimiter=csv_delimiter,
-               csv_encoding=csv_encoding,
-               csv_lineterminator=csv_lineterminator,
-               csv_quotechar=csv_quotechar,
-               csv_escapechar=csv_escapechar,
-               csv_quoting=csv_quoting,
-               csv_no_doublequote=csv_no_doublequote,
-               output='-')
+    ctx.invoke(transcode, output='-', **keywords)

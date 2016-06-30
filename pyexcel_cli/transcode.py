@@ -38,22 +38,33 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 @click.option('--name-rows-by-column',
               default=None, type=int,
               help="use a column as row headers")
-@click.option('--csv-delimiter', default=None)
-@click.option('--csv-encoding', default=None)
-@click.option('--csv-lineterminator', default=None)
-@click.option('--csv-quotechar', default=None)
-@click.option('--csv-escapechar', default=None)
-@click.option('--csv-quoting', default=None)
-@click.option('--csv-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-source-delimiter', default=None)
+@click.option('--csv-source-encoding', default=None)
+@click.option('--csv-source-lineterminator', default=None)
+@click.option('--csv-source-quotechar', default=None)
+@click.option('--csv-source-escapechar', default=None)
+@click.option('--csv-source-quoting', default=None)
+@click.option('--csv-source-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-dest-delimiter', default=None)
+@click.option('--csv-dest-encoding', default=None)
+@click.option('--csv-dest-lineterminator', default=None)
+@click.option('--csv-dest-quotechar', default=None)
+@click.option('--csv-dest-escapechar', default=None)
+@click.option('--csv-dest-quoting', default=None)
+@click.option('--csv-dest-no-doublequote', default=False, is_flag=True)
 @click.argument('source', nargs=1)
 @click.argument('output', nargs=1)
 def transcode(source_file_type, output_file_type,
               sheet_name, sheet_index,
               name_columns_by_row, name_rows_by_column,
-              csv_delimiter, csv_encoding,
-              csv_lineterminator, csv_quotechar,
-              csv_escapechar, csv_quoting,
-              csv_no_doublequote,
+              csv_source_delimiter, csv_source_encoding,
+              csv_source_lineterminator, csv_source_quotechar,
+              csv_source_escapechar, csv_source_quoting,
+              csv_source_no_doublequote,
+              csv_dest_delimiter, csv_dest_encoding,
+              csv_dest_lineterminator, csv_dest_quotechar,
+              csv_dest_escapechar, csv_dest_quoting,
+              csv_dest_no_doublequote,
               source, output):
     """
     Trancode an excel file from one format to another.
@@ -76,11 +87,20 @@ def transcode(source_file_type, output_file_type,
     else:
         params['dest_file_name'] = output
 
+    if source_file_type == 'csv' or source.endswith('csv'):
+        csv_params = _make_csv_params(
+            csv_source_lineterminator, csv_source_encoding,
+            csv_source_delimiter, csv_source_quoting,
+            csv_source_quotechar, csv_source_escapechar,
+            csv_source_no_doublequote)
+        params.update(csv_params)
+
     if output_file_type == 'csv' or output.endswith('csv'):
         csv_params = _make_csv_params(
-            csv_lineterminator, csv_encoding, csv_delimiter,
-            csv_quoting, csv_quotechar, csv_escapechar,
-            csv_no_doublequote, prefix="dest_")
+            csv_dest_lineterminator, csv_dest_encoding,
+            csv_dest_delimiter, csv_dest_quoting,
+            csv_dest_quotechar, csv_dest_escapechar,
+            csv_dest_no_doublequote, prefix="dest_")
         params.update(csv_params)
 
     sheet_parameters = [sheet_name, sheet_index,
