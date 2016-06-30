@@ -20,7 +20,7 @@ Here is an example usage:
 .. code-block:: bash
 
     $ pyexcel view https://github.com/pyexcel/pyexcel-cli/blob/master/tests/fixtures/multiple-sheets.xls
-	Sheet 1:
+    Sheet 1:
     +---+---+---+
     | 1 | 2 | 3 |
     +---+---+---+
