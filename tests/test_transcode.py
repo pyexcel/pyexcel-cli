@@ -55,6 +55,20 @@ def test_name_columns_by_row():
     eq_(result.output, expected)
 
 
+def test_name_rows_by_column():
+    runner = CliRunner()
+    test_fixture = os.path.join("tests", "fixtures",
+                                "transcode_row_names.csv")
+    result = runner.invoke(transcode, ["--output-file-type", "json",
+                                       "--name-rows-by-column",  "0",
+                                       test_fixture, '-'])
+    eq_(result.exit_code, 0)
+    expected = ('{"transcode_row_names.csv": ' +
+                '[{"grade": 100, "name": "Adam"}, ' +
+                '{"grade": 100, "name": "Eve"}]}')
+    eq_(result.output, expected)
+
+
 def test_multiple_sheet():
     runner = CliRunner()
     test_fixture = os.path.join("tests", "fixtures",
