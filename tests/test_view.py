@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 from nose.tools import eq_
 from pyexcel_cli.view import view
@@ -24,6 +27,17 @@ def test_stdout_option():
                                   test_fixture])
     eq_(result.exit_code, 0)
     eq_(result.output, '1,2,3\n')
+
+
+def test_csv_encoding_option():
+    runner = CliRunner()
+    test_fixture = os.path.join("tests", "fixtures", "csv-encoding-utf16.csv")
+    result = runner.invoke(view, ["--output-file-type", "csv",
+                                  "--csv-source-encoding", "utf-16",
+                                  "--csv-dest-lineterminator", "\n",
+                                  test_fixture])
+    eq_(result.exit_code, 0)
+    eq_(result.output, 'Äkkilähdöt,Matkakirjoituksia,Matkatoimistot\n')
 
 
 def test_url_option():
