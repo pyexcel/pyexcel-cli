@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 from nose.tools import eq_
 from pyexcel_cli.view import view
 from click.testing import CliRunner
@@ -37,7 +38,11 @@ def test_csv_encoding_option():
                                   "--csv-dest-lineterminator", "\n",
                                   test_fixture])
     eq_(result.exit_code, 0)
-    eq_(result.output, 'Äkkilähdöt,Matkakirjoituksia,Matkatoimistot\n')
+    if sys.version_info[0] == 2:
+        output = result.output.encode('utf-8')
+    else:
+        output = result.output
+    eq_(output, 'Äkkilähdöt,Matkakirjoituksia,Matkatoimistot\n')
 
 
 def test_url_option():
