@@ -40,8 +40,8 @@ def test_stdout_option():
     glob_fixture = os.path.join("tests", "fixtures", "glob_dir", "*")
     output = "-"
     result = runner.invoke(merge, ["--output-file-type", "csv",
-                                   "--csv-lineterminator", "\n",
-                                   "--csv-delimiter", ":",
+                                   "--csv-output-lineterminator", "\n",
+                                   "--csv-output-delimiter", ":",
                                    file_fixture, dir_fixture, glob_fixture,
                                    output])
     eq_(result.exit_code, 0)
@@ -64,9 +64,9 @@ def test_more_csv_options():
     file_fixture = os.path.join("tests", "fixtures", "transcode_quoted.csv")
     output = "-"
     result = runner.invoke(merge, ["--output-file-type", "csv",
-                                   "--csv-lineterminator", "\n",
-                                   "--csv-delimiter", ":",
-                                   "--csv-quoting", "minimal",
+                                   "--csv-output-lineterminator", "\n",
+                                   "--csv-output-delimiter", ":",
+                                   "--csv-output-quoting", "minimal",
                                    file_fixture, output])
     eq_(result.exit_code, 0)
     expected = dedent("""

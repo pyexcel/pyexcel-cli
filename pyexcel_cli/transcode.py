@@ -45,13 +45,13 @@ SHEET_TIP = "Once specified, it will work on pyexcel Sheet."
 @click.option('--csv-source-escapechar', default=None)
 @click.option('--csv-source-quoting', default=None)
 @click.option('--csv-source-no-doublequote', default=False, is_flag=True)
-@click.option('--csv-dest-delimiter', default=None)
-@click.option('--csv-dest-encoding', default=None)
-@click.option('--csv-dest-lineterminator', default=None)
-@click.option('--csv-dest-quotechar', default=None)
-@click.option('--csv-dest-escapechar', default=None)
-@click.option('--csv-dest-quoting', default=None)
-@click.option('--csv-dest-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-output-delimiter', default=None)
+@click.option('--csv-output-encoding', default=None)
+@click.option('--csv-output-lineterminator', default=None)
+@click.option('--csv-output-quotechar', default=None)
+@click.option('--csv-output-escapechar', default=None)
+@click.option('--csv-output-quoting', default=None)
+@click.option('--csv-output-no-doublequote', default=False, is_flag=True)
 @click.argument('source', nargs=1)
 @click.argument('output', nargs=1)
 def transcode(source_file_type, output_file_type,
@@ -61,10 +61,10 @@ def transcode(source_file_type, output_file_type,
               csv_source_lineterminator, csv_source_quotechar,
               csv_source_escapechar, csv_source_quoting,
               csv_source_no_doublequote,
-              csv_dest_delimiter, csv_dest_encoding,
-              csv_dest_lineterminator, csv_dest_quotechar,
-              csv_dest_escapechar, csv_dest_quoting,
-              csv_dest_no_doublequote,
+              csv_output_delimiter, csv_output_encoding,
+              csv_output_lineterminator, csv_output_quotechar,
+              csv_output_escapechar, csv_output_quoting,
+              csv_output_no_doublequote,
               source, output):
     """
     Trancode an excel file from one format to another.
@@ -97,10 +97,10 @@ def transcode(source_file_type, output_file_type,
 
     if output_file_type == 'csv' or output.endswith('csv'):
         csv_params = _make_csv_params(
-            csv_dest_lineterminator, csv_dest_encoding,
-            csv_dest_delimiter, csv_dest_quoting,
-            csv_dest_quotechar, csv_dest_escapechar,
-            csv_dest_no_doublequote, prefix="dest_")
+            csv_output_lineterminator, csv_output_encoding,
+            csv_output_delimiter, csv_output_quoting,
+            csv_output_quotechar, csv_output_escapechar,
+            csv_output_no_doublequote, prefix="dest_")
         params.update(csv_params)
 
     sheet_parameters = [sheet_name, sheet_index,

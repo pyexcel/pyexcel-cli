@@ -20,19 +20,19 @@ from pyexcel_cli._shared import (
 @click.command(short_help="Merge excel files into one")
 @click.option('--output-file-type',
               help="file type of the stdout if '-' is given")
-@click.option('--csv-delimiter', default=None)
-@click.option('--csv-encoding', default=None)
-@click.option('--csv-lineterminator', default=None)
-@click.option('--csv-quotechar', default=None)
-@click.option('--csv-escapechar', default=None)
-@click.option('--csv-quoting', default=None)
-@click.option('--csv-no-doublequote', default=False, is_flag=True)
+@click.option('--csv-output-delimiter', default=None)
+@click.option('--csv-output-encoding', default=None)
+@click.option('--csv-output-lineterminator', default=None)
+@click.option('--csv-output-quotechar', default=None)
+@click.option('--csv-output-escapechar', default=None)
+@click.option('--csv-output-quoting', default=None)
+@click.option('--csv-output-no-doublequote', default=False, is_flag=True)
 @click.argument('sources', nargs=-1)
 @click.argument('output', nargs=1)
 def merge(output_file_type,
-          csv_delimiter, csv_encoding, csv_quotechar,
-          csv_escapechar, csv_quoting,
-          csv_lineterminator, csv_no_doublequote,
+          csv_output_delimiter, csv_output_encoding, csv_output_quotechar,
+          csv_output_escapechar, csv_output_quoting,
+          csv_output_lineterminator, csv_output_no_doublequote,
           sources, output):
     """
     Merge excel files in various file formats into one excel file
@@ -57,9 +57,10 @@ def merge(output_file_type,
     params = {}
     if output_file_type == 'csv' or output.endswith('csv'):
         params = _make_csv_params(
-            csv_lineterminator, csv_encoding, csv_delimiter,
-            csv_quoting, csv_quotechar, csv_escapechar,
-            csv_no_doublequote)
+            csv_output_lineterminator, csv_output_encoding,
+            csv_output_delimiter, csv_output_quoting,
+            csv_output_quotechar, csv_output_escapechar,
+            csv_output_no_doublequote)
 
     for afile in _join_the_list(file_list, dir_list, glob_list):
         try:
