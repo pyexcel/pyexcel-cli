@@ -7,7 +7,7 @@ except ImportError:
 
 NAME = 'pyexcel-cli'
 AUTHOR = 'C.W.'
-VERSION = '0.1.0'
+VERSION = '0.0.1'
 EMAIL = 'wangc_2011 (at) hotmail.com'
 LICENSE = 'New BSD'
 ENTRY_POINTS = {

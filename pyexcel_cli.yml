@@ -1,7 +1,7 @@
 overrides: "pyexcel.yaml"
 name: "pyexcel-cli"
 nick_name: cli
-version: 0.1.0
+version: 0.0.1
 command_line_interface: pyexcel
 entry_point: pyexcel_cli.main:main
 dependencies:
