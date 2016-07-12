@@ -7,7 +7,7 @@ except ImportError:
 
 NAME = 'pyexcel-cli'
 AUTHOR = 'C.W.'
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 EMAIL = 'wangc_2011 (at) hotmail.com'
 LICENSE = 'New BSD'
 ENTRY_POINTS = {
@@ -29,6 +29,7 @@ KEYWORDS = [
 
 INSTALL_REQUIRES = [
     'pyexcel>=0.2.3',
+    'pyexcel-io>=0.2.1',
     'Click>=5.0',
 ]
 

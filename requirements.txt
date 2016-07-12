@@ -1,2 +1,3 @@
 pyexcel>=0.2.3
+pyexcel-io>=0.2.1
 Click>=5.0
