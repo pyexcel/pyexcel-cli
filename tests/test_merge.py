@@ -41,19 +41,19 @@ def test_stdout_option():
     output = "-"
     result = runner.invoke(merge, ["--output-file-type", "csv",
                                    "--csv-output-lineterminator", "\n",
-                                   "--csv-output-delimiter", ":",
+                                   "--csv-output-delimiter", ";",
                                    file_fixture, dir_fixture, glob_fixture,
                                    output])
     eq_(result.exit_code, 0)
     expected = dedent("""
     ---pyexcel:transcode_simple.csv---
-    1:2:3
+    1;2;3
     ---pyexcel---
     ---pyexcel:merge_test.csv---
-    1:2:3
+    1;2;3
     ---pyexcel---
     ---pyexcel:merge_test2.csv---
-    1:2:3
+    1;2;3
     ---pyexcel---
     """).strip('\n') + '\n'
     eq_(result.output, expected)
