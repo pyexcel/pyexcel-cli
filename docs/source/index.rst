@@ -5,7 +5,8 @@
 :Source code: http://github.com/pyexcel/pyexcel-cli.git
 :Issues: http://github.com/pyexcel/pyexcel-cli/issues
 :License: New BSD License
-:Version: |version|
+:Development: |version|
+:Released: |release|
 :Generated: |today|
 
 Introduction
@@ -129,3 +130,9 @@ Commands:
   #. transcode  Transcode an excel file
   #. view       View an excel file
 
+Tutorial
+================================================================================
+
+.. toctree::
+
+   do_diff

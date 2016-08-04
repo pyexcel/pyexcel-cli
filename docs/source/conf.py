@@ -4,12 +4,13 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
+    'sphinxcontrib.spelling',
 ]
 
 intersphinx_mapping = {
     'pyexcel': ('http://pyexcel.readthedocs.org/en/latest/', None)
 }
-
+spelling_word_list_filename = 'spelling_wordlist.txt'
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
