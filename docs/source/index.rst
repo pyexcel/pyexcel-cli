@@ -58,6 +58,9 @@ Here is an example usage:
     | 4 | 3 | 2 |
     +---+---+---+
 
+Because pyexcel family is loosely coupled, especially for file format supports, you
+install the libraries that you need to. If you need to support xls format, you will
+need to install pyexcel-xls. For more information, please see the plugin section.
 Installation
 ================================================================================
 
@@ -126,9 +129,3 @@ Commands:
   #. transcode  Transcode an excel file
   #. view       View an excel file
 
-Tutorial
-================================================================================
-
-.. toctree::
-
-   do_diff
