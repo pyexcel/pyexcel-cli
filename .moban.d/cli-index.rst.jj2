@@ -20,3 +20,9 @@ Command line reference
 
 {% include "usage.rst.jj2"%}
 
+Tutorial
+================================================================================
+
+.. toctree::
+
+   do_diff

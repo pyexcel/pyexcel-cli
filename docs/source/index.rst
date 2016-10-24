@@ -148,3 +148,9 @@ Commands:
   #. transcode  Transcode an excel file
   #. view       View an excel file
 
+Tutorial
+================================================================================
+
+.. toctree::
+
+   do_diff
