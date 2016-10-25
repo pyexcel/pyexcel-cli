@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-=======
-sphinxcontrib-spelling
-https://github.com/pyexcel/pyexcel-io/archive/master.zip
->>>>>>> 0c99c0496a1702db5b77971e143315dbc436e063
 https://github.com/pyexcel/pyexcel/archive/master.zip
 https://github.com/pyexcel/pyexcel-text/archive/master.zip
