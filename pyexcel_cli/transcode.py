@@ -2,7 +2,7 @@
     pyexcel transcode
     ~~~~~~~~~~~~~~~~~~~
 
-    :copyright: (c) 2016 by Onni Software Ltd.
+    :copyright: (c) 2016-2017 by Onni Software Ltd.
     :license: MIT License, see LICENSE for more details
 
 """
