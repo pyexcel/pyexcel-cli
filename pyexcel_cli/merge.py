@@ -12,6 +12,7 @@ import glob
 import click
 from pyexcel.book import Book
 from pyexcel import get_book
+from pyexcel.sources.factory import FileTypeNotSupported
 from pyexcel_cli._shared import (
     _make_csv_params
 )
@@ -68,6 +69,9 @@ def merge(output_file_type,
             merged_book += book
             if output != "-":
                 click.echo(".")
+        except FileTypeNotSupported:
+            # version pyexcel>=0.4.4
+            click.echo("Skipping %s" % afile)
         except NotImplementedError:
             click.echo("Skipping %s" % afile)
     if merged_book.number_of_sheets() > 0:
