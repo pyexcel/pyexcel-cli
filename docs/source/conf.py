@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+DESCRIPTION = (
+    'A command utility to read and write data in csv, tsv, xls, xlsx and od' +
+    's format.' +
+    ''
+)
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
@@ -25,15 +30,19 @@ html_static_path = ['_static']
 htmlhelp_basename = 'pyexcel-clidoc'
 latex_elements = {}
 latex_documents = [
-    ('index', 'pyexcel-cli.tex', u'pyexcel-cli Documentation',
+    ('index', 'pyexcel-cli.tex',
+     'pyexcel-cli Documentation',
      'Onni Software Ltd.', 'manual'),
 ]
 man_pages = [
-    ('index', 'pyexcel-cli', u'pyexcel-cli Documentation',
+    ('index', 'pyexcel-cli',
+     'pyexcel-cli Documentation',
      [u'Onni Software Ltd.'], 1)
 ]
 texinfo_documents = [
-    ('index', 'pyexcel-cli', u'pyexcel-cli Documentation',
-     'Onni Software Ltd.', 'pyexcel-cli', 'One line description of project.',
+    ('index', 'pyexcel-cli',
+     'pyexcel-cli Documentation',
+     'Onni Software Ltd.', 'pyexcel-cli',
+     DESCRIPTION,
      'Miscellaneous'),
 ]

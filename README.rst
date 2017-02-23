@@ -85,6 +85,7 @@ need to install pyexcel-xls. For more information, please see the plugin section
    `pyexcel-ods3`_   ods                     `ezodf`_,     2.6, 2.7, 3.3, 3.4
                                              lxml          3.5, 3.6
    `pyexcel-ods`_    ods                     `odfpy`_      same as above
+   `pyexcel-odsr`_   ods(read only)          lxml          same as above
    `pyexcel-text`_   (write only)json, rst,  `tabulate`_   2.6, 2.7, 3.3, 3.4
                      mediawiki, html,                      3.5, pypy, pypy3
                      latex, grid, pipe,
@@ -96,6 +97,7 @@ need to install pyexcel-xls. For more information, please see the plugin section
 .. _pyexcel-xlsx: https://github.com/pyexcel/pyexcel-xlsx
 .. _pyexcel-ods: https://github.com/pyexcel/pyexcel-ods
 .. _pyexcel-ods3: https://github.com/pyexcel/pyexcel-ods3
+.. _pyexcel-odsr: https://github.com/pyexcel/pyexcel-odsr
 .. _pyexcel-xlsxw: https://github.com/pyexcel/pyexcel-xlsxw
 
 .. _xlrd: https://github.com/python-excel/xlrd
@@ -154,11 +156,11 @@ Then install relevant development requirements:
 #. pip install -r tests/requirements.txt
 
 
-In order to update test environment, and documentation, additional setps are
+In order to update test environment, and documentation, additional steps are
 required:
 
 #. pip install moban
-#. git clone https://github.com/pyexcel/pyexcel-commons.git
+#. git clone https://github.com/pyexcel/pyexcel-commons.git commons
 #. make your changes in `.moban.d` directory, then issue command `moban`
 
 What is rnd_requirements.txt
@@ -188,6 +190,7 @@ On Linux/Unix systems, please launch your tests like this::
 On Windows systems, please issue this command::
 
     > test.bat
+
 
 License
 ================================================================================
