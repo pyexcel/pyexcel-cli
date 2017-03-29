@@ -12,7 +12,7 @@ import glob
 import click
 from pyexcel.book import Book
 from pyexcel import get_book
-from pyexcel.sources.factory import FileTypeNotSupported
+from pyexcel.exceptions import FileTypeNotSupported
 from pyexcel_cli._shared import (
     _make_csv_params
 )
