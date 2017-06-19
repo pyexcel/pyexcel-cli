@@ -45,8 +45,8 @@ CLASSIFIERS = [
 ]
 
 INSTALL_REQUIRES = [
-    'pyexcel>=0.2.3',
-    'pyexcel-io>=0.2.1',
+    'pyexcel>=0.5.0',
+    'pyexcel-io>=0.4.0',
     'Click>=5.0',
 ]
 
