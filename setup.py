@@ -11,7 +11,7 @@ PY26 = PY2 and sys.version_info[1] < 7
 NAME = 'pyexcel-cli'
 AUTHOR = 'C.W.'
 VERSION = '0.0.2'
-EMAIL = 'wangc_2011 (at) hotmail.com'
+EMAIL = 'wangc_2011@hotmail.com'
 LICENSE = 'New BSD'
 ENTRY_POINTS = {
     'console_scripts': [

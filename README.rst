@@ -93,8 +93,8 @@ need to install pyexcel-xls. For more information, please see the plugin section
                             mediawiki, html,                        3.5, pypy, pypy3
                             latex, grid, pipe,
                             orgtbl, plain simple
-   `pyexcel-handsontable`_  handsontable in html    `handsontable`_ same as above
-   `pyexcel-chart`_         svg chart               `pygal`_        same as above
+   `pyexcel-handsontable`_  handsontable in html    `handsontable`_ same as above [#f3]_
+   `pyexcel-pygal`_         svg chart               `pygal`_        same as above [#f3]_
    ======================== ======================= =============== ==================
 
 .. _pyexcel-io: https://github.com/pyexcel/pyexcel-io
@@ -116,8 +116,19 @@ need to install pyexcel-xls. For more information, please see the plugin section
 .. _tabulate: https://bitbucket.org/astanin/python-tabulate
 .. _pyexcel-handsontable: https://github.com/pyexcel/pyexcel-handsontable
 .. _handsontable: https://cdnjs.com/libraries/handsontable
-.. _pyexcel-chart: https://github.com/pyexcel/pyexcel-chart
+.. _pyexcel-pygal: https://github.com/pyexcel/pyexcel-chart
 .. _pygal: https://github.com/Kozea/pygal
+.. _pyexcel-matplotlib: https://github.com/pyexcel/pyexcel-matplotlib
+.. _matplotlib: https://matplotlib.org
+
+.. [#f3] coming soon
+
+In order to manage the list of plugins installed, you need to use pip to add or remove
+a plugin. When you use virtualenv, you can have different plugins per virtual
+environment. In the situation where you have multiple plugins that does the same thing
+in your environment, you need to tell pyexcel which plugin to use per function call.
+For example, pyexcel-ods and pyexcel-odsr, and you want to get_array to use pyexcel-odsr.
+You need to append get_array(..., library='pyexcel-odsr').
 
 .. rubric:: Footnotes
 
@@ -140,10 +151,25 @@ or clone it and install it:
 
 .. code-block:: bash
 
-    $ git clone http://github.com/pyexcel/pyexcel-cli.git
+    $ git clone https://github.com/pyexcel/pyexcel-cli.git
     $ cd pyexcel-cli
     $ python setup.py install
 
+
+
+Support the project
+================================================================================
+
+If your company has embedded pyexcel and its components into a revenue generating
+product, please `support me on patreon <https://www.patreon.com/bePatron?u=5537627>`_ to
+maintain the project and develop it further.
+
+If you are an individual, you are welcome to support me too on patreon and for however long
+you feel like to. As a patreon, you will receive
+`early access to pyexcel related contents <https://www.patreon.com/pyexcel/posts>`_.
+
+With your financial support, I will be able to invest
+a little bit more time in coding, documentation and writing interesting posts.
 
 
 Development guide
@@ -205,10 +231,3 @@ License
 ================================================================================
 
 New BSD License
-
-Support the project
-================================================================================
-
-If your company has embedded pyexcel and its components into a revenue generating
-product, please `support me on patreon <https://www.patreon.com/pyexcel>`_ to
-maintain the project and develop it further.
