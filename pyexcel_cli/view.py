@@ -56,7 +56,10 @@ def view(ctx, in_browser, **keywords):
     """
     output = '-'
     if in_browser:
-        output = tempfile.mkstemp(suffix='handsontable.html')[1]
+        viewing_file_type = 'handsontable.html'
+        if keywords['output_file_type'] != 'texttable':
+            viewing_file_type = keywords['output_file_type']
+        output = tempfile.mkstemp(suffix=viewing_file_type)[1]
     ctx.invoke(transcode, output=output, **keywords)
     if in_browser:
         import webbrowser
