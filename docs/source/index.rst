@@ -190,3 +190,5 @@ Tutorial
 .. toctree::
 
    do_diff
+   do_transcode
+   do_view
