@@ -29,6 +29,13 @@ Hightlighted features:
 Usage
 ================================================================================
 
+.. code-block:: bash
+
+   $ cd demo
+   $ pyexcel view --in-browser census.xls
+
+Here's what you will get:
+
 .. image:: https://github.com/pyexcel/pyexcel-cli/raw/master/pyexcel-cli.gif
 
 Here is an example usage:
