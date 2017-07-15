@@ -24,6 +24,10 @@ Here's what you will get:
 
 .. image:: https://github.com/pyexcel/pyexcel-cli/raw/master/pyexcel-cli-sortable.gif
 
+.. note::
+
+   You will need to install pyexcel-sortable, which renders it.
+
 Here is another cli example usage:
 
 .. code-block:: bash
