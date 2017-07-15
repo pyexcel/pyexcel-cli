@@ -74,6 +74,8 @@ Here is another cli example usage:
 Because pyexcel family is loosely coupled, especially for file format supports, you
 install the libraries that you need to. If you need to support xls format, you will
 need to install pyexcel-xls. For more information, please see the plugin section.
+
+
 Installation
 ================================================================================
 You can install it via pip:
