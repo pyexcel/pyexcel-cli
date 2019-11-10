@@ -1,0 +1,17 @@
+releases:
+- changes:
+  - action: Added
+    details:
+    - 'To allow viewing csvtotable in browser and the syntax is:  pyexcel view --in-browser
+      --output-file-type sortable.html --sheet-index 0 goog.ods'
+  date: 15.07.2017
+  version: 0.0.3
+- changes:
+  - action: Updated
+    details:
+    - use pyexcel v0.5.0
+  date: 19.06.2017
+  version: 0.0.2
+- changes: []
+  date: 11.07.2016
+  version: 0.0.1

@@ -78,7 +78,8 @@ need to install pyexcel-xls. For more information, please see the plugin section
 
 Installation
 ================================================================================
-You can install it via pip:
+
+You can install pyexcel-cli via pip:
 
 .. code-block:: bash
 
@@ -102,29 +103,34 @@ List of plugins
 
 .. table:: A list of file formats supported by external plugins
 
-   ======================== ======================= =============== ==================
-   Package name              Supported file formats  Dependencies   Python versions
-   ======================== ======================= =============== ==================
-   `pyexcel-io`_            csv, csvz [#f1]_, tsv,                  2.6, 2.7, 3.3,
-                            tsvz [#f2]_                             3.4, 3.5, 3.6
-                                                                    pypy
-   `pyexcel-xls`_           xls, xlsx(read only),   `xlrd`_,        same as above
+   ======================== ======================= ================= ==================
+   Package name              Supported file formats  Dependencies     Python versions
+   ======================== ======================= ================= ==================
+   `pyexcel-io`_            csv, csvz [#f1]_, tsv,                    2.6, 2.7, 3.3,
+                            tsvz [#f2]_                               3.4, 3.5, 3.6
+                                                                      pypy
+   `pyexcel-xls`_           xls, xlsx(read only),   `xlrd`_,          same as above
                             xlsm(read only)         `xlwt`_
-   `pyexcel-xlsx`_          xlsx                    `openpyxl`_     same as above
-   `pyexcel-xlsxw`_         xlsx(write only)        `XlsxWriter`_   same as above
-   `pyexcel-ods3`_          ods                     `ezodf`_,       2.6, 2.7, 3.3, 3.4
-                                                    lxml            3.5, 3.6
-   `pyexcel-ods`_           ods                     `odfpy`_        same as above
-   `pyexcel-odsr`_          ods(read only)          lxml            same as above
-   `pyexcel-text`_          (write only)json, rst,  `tabulate`_     2.6, 2.7, 3.3, 3.4
-                            mediawiki, html,                        3.5, 3.6, pypy
-                            latex, grid, pipe,
-                            orgtbl, plain simple
-   `pyexcel-handsontable`_  handsontable in html    `handsontable`_ same as above
-   `pyexcel-pygal`_         svg chart               `pygal`_        2.7, 3.3, 3.4, 3.5
-                                                                    3.6, pypy
-   `pyexcel-sortable`_      sortable table in html  `csvtotable`_   same as above
-   ======================== ======================= =============== ==================
+   `pyexcel-xlsx`_          xlsx                    `openpyxl`_       same as above
+   `pyexcel-ods3`_          ods                     `pyexcel-ezodf`_, 2.6, 2.7, 3.3, 3.4
+                                                    lxml              3.5, 3.6
+   `pyexcel-ods`_           ods                     `odfpy`_          same as above
+   ======================== ======================= ================= ==================
+
+.. table:: Dedicated file reader and writers
+
+   ======================== ======================= ================= ==================
+   Package name              Supported file formats  Dependencies     Python versions
+   ======================== ======================= ================= ==================
+   `pyexcel-xlsxw`_         xlsx(write only)        `XlsxWriter`_     Python 2 and 3
+   `pyexcel-xlsxr`_         xlsx(read only)         lxml              same as above
+   `pyexcel-xlsbr`_         xlsx(read only)         pyxlsb            same as above
+   `pyexcel-odsr`_          read only for ods, fods lxml              same as above
+   `pyexcel-odsw`_          write only for ods      loxun             same as above
+   `pyexcel-htmlr`_         html(read only)         lxml,html5lib     same as above
+   `pyexcel-pdfr`_          pdf(read only)          pdftables         Python 2 only.
+   ======================== ======================= ================= ==================
+
 
 .. _pyexcel-io: https://github.com/pyexcel/pyexcel-io
 .. _pyexcel-xls: https://github.com/pyexcel/pyexcel-xls
@@ -132,14 +138,39 @@ List of plugins
 .. _pyexcel-ods: https://github.com/pyexcel/pyexcel-ods
 .. _pyexcel-ods3: https://github.com/pyexcel/pyexcel-ods3
 .. _pyexcel-odsr: https://github.com/pyexcel/pyexcel-odsr
+.. _pyexcel-odsw: https://github.com/pyexcel/pyexcel-odsw
+.. _pyexcel-pdfr: https://github.com/pyexcel/pyexcel-pdfr
+
 .. _pyexcel-xlsxw: https://github.com/pyexcel/pyexcel-xlsxw
+.. _pyexcel-xlsxr: https://github.com/pyexcel/pyexcel-xlsxr
+.. _pyexcel-xlsbr: https://github.com/pyexcel/pyexcel-xlsbr
+.. _pyexcel-htmlr: https://github.com/pyexcel/pyexcel-htmlr
 
 .. _xlrd: https://github.com/python-excel/xlrd
 .. _xlwt: https://github.com/python-excel/xlwt
 .. _openpyxl: https://bitbucket.org/openpyxl/openpyxl
 .. _XlsxWriter: https://github.com/jmcnamara/XlsxWriter
-.. _ezodf: https://github.com/T0ha/ezodf
+.. _pyexcel-ezodf: https://github.com/pyexcel/pyexcel-ezodf
 .. _odfpy: https://github.com/eea/odfpy
+
+.. table:: Other data renderers
+
+   ======================== ======================= ================= ==================
+   Package name              Supported file formats  Dependencies     Python versions
+   ======================== ======================= ================= ==================
+   `pyexcel-text`_          write only:rst,         `tabulate`_       2.6, 2.7, 3.3, 3.4
+                            mediawiki, html,                          3.5, 3.6, pypy
+                            latex, grid, pipe,
+                            orgtbl, plain simple
+                            read only: ndjson
+                            r/w: json
+   `pyexcel-handsontable`_  handsontable in html    `handsontable`_   same as above
+   `pyexcel-pygal`_         svg chart               `pygal`_          2.7, 3.3, 3.4, 3.5
+                                                                      3.6, pypy
+   `pyexcel-sortable`_      sortable table in html  `csvtotable`_     same as above
+   `pyexcel-gantt`_         gantt chart in html     `frappe-gantt`_   except pypy, same
+                                                                      as above
+   ======================== ======================= ================= ==================
 
 .. _pyexcel-text: https://github.com/pyexcel/pyexcel-text
 .. _tabulate: https://bitbucket.org/astanin/python-tabulate
@@ -151,7 +182,8 @@ List of plugins
 .. _matplotlib: https://matplotlib.org
 .. _pyexcel-sortable: https://github.com/pyexcel/pyexcel-sortable
 .. _csvtotable: https://github.com/vividvilla/csvtotable
-
+.. _pyexcel-gantt: https://github.com/pyexcel/pyexcel-gantt
+.. _frappe-gantt: https://github.com/frappe/gantt
 
 In order to manage the list of plugins installed, you need to use pip to add or remove
 a plugin. When you use virtualenv, you can have different plugins per virtual

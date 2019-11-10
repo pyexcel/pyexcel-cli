@@ -13,5 +13,12 @@ Suppose you have an `google stock price <https://github.com/pyexcel/excel2table/
 
     $ pyexcel view --in-browser --output-file-type sortable.html --sheet-index 0 https://github.com/pyexcel/excel2table/raw/master/sample/goog.ods
 
-
 .. image:: ../../pyexcel-cli-sortable.gif
+
+
+Suppose you have an `tasks file <https://github.com/pyexcel/pyexcel-gantt/raw/master/demo/tasks.csv>`_, and you want to see gantt chart, here is what you can do::
+
+    $ pyexcel view --in-browser --output-file-type gantt.html https://github.com/pyexcel/pyexcel-gantt/raw/master/demo/tasks.csv
+
+
+.. image:: https://github.com/pyexcel/pyexcel-gantt/raw/master/pyexcel-gantt.gif
