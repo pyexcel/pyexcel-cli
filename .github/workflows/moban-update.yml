@@ -1,0 +1,29 @@
+on: [push]
+
+jobs:
+  run_moban:
+    runs-on: ubuntu-latest
+    name: synchronize templates via moban
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PAT }}
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.11'
+      - name: check changes
+        run: |
+          pip install markupsafe==2.0.1
+          pip install ruamel.yaml moban gitfs2 pypifs moban-jinja2-github moban-ansible
+          moban
+          git status
+          git diff --exit-code
+      - name: Auto-commit
+        if: failure()
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: >-
+            This is an auto-commit, updating project meta data,
+            such as changelog.rst, contributors.rst

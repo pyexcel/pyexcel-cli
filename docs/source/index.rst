@@ -103,33 +103,56 @@ List of plugins
 
 .. table:: A list of file formats supported by external plugins
 
-   ======================== ======================= ================= ==================
-   Package name              Supported file formats  Dependencies     Python versions
-   ======================== ======================= ================= ==================
-   `pyexcel-io`_            csv, csvz [#f1]_, tsv,                    2.6, 2.7, 3.3,
-                            tsvz [#f2]_                               3.4, 3.5, 3.6
-                                                                      pypy
-   `pyexcel-xls`_           xls, xlsx(read only),   `xlrd`_,          same as above
+   ======================== ======================= =================
+   Package name              Supported file formats  Dependencies
+   ======================== ======================= =================
+   `pyexcel-io`_            csv, csvz [#f1]_, tsv,  csvz,tsvz readers depends on `chardet`
+                            tsvz [#f2]_
+   `pyexcel-xls`_           xls, xlsx(read only),   `xlrd`_,
                             xlsm(read only)         `xlwt`_
-   `pyexcel-xlsx`_          xlsx                    `openpyxl`_       same as above
-   `pyexcel-ods3`_          ods                     `pyexcel-ezodf`_, 2.6, 2.7, 3.3, 3.4
-                                                    lxml              3.5, 3.6
-   `pyexcel-ods`_           ods                     `odfpy`_          same as above
-   ======================== ======================= ================= ==================
+   `pyexcel-xlsx`_          xlsx                    `openpyxl`_
+   `pyexcel-ods3`_          ods                     `pyexcel-ezodf`_,
+                                                    lxml
+   `pyexcel-ods`_           ods                     `odfpy`_
+   ======================== ======================= =================
 
 .. table:: Dedicated file reader and writers
 
-   ======================== ======================= ================= ==================
-   Package name              Supported file formats  Dependencies     Python versions
-   ======================== ======================= ================= ==================
-   `pyexcel-xlsxw`_         xlsx(write only)        `XlsxWriter`_     Python 2 and 3
-   `pyexcel-xlsxr`_         xlsx(read only)         lxml              same as above
-   `pyexcel-xlsbr`_         xlsx(read only)         pyxlsb            same as above
-   `pyexcel-odsr`_          read only for ods, fods lxml              same as above
-   `pyexcel-odsw`_          write only for ods      loxun             same as above
-   `pyexcel-htmlr`_         html(read only)         lxml,html5lib     same as above
-   `pyexcel-pdfr`_          pdf(read only)          pdftables         Python 2 only.
-   ======================== ======================= ================= ==================
+   ======================== ======================= =================
+   Package name              Supported file formats  Dependencies
+   ======================== ======================= =================
+   `pyexcel-xlsxw`_         xlsx(write only)        `XlsxWriter`_
+   `pyexcel-libxlsxw`_      xlsx(write only)        `libxlsxwriter`_
+   `pyexcel-xlsxr`_         xlsx(read only)         lxml
+   `pyexcel-xlsbr`_         xlsb(read only)         pyxlsb
+   `pyexcel-odsr`_          read only for ods, fods lxml
+   `pyexcel-odsw`_          write only for ods      loxun
+   `pyexcel-htmlr`_         html(read only)         lxml,html5lib
+   `pyexcel-pdfr`_          pdf(read only)          camelot
+   ======================== ======================= =================
+
+
+Plugin shopping guide
+------------------------
+
+Since 2020, all pyexcel-io plugins have dropped the support for python versions
+which are lower than 3.6. If you want to use any of those Python versions, please use pyexcel-io
+and its plugins versions that are lower than 0.6.0.
+
+
+Except csv files, xls, xlsx and ods files are a zip of a folder containing a lot of
+xml files
+
+The dedicated readers for excel files can stream read
+
+
+In order to manage the list of plugins installed, you need to use pip to add or remove
+a plugin. When you use virtualenv, you can have different plugins per virtual
+environment. In the situation where you have multiple plugins that does the same thing
+in your environment, you need to tell pyexcel which plugin to use per function call.
+For example, pyexcel-ods and pyexcel-odsr, and you want to get_array to use pyexcel-odsr.
+You need to append get_array(..., library='pyexcel-odsr').
+
 
 
 .. _pyexcel-io: https://github.com/pyexcel/pyexcel-io
@@ -142,6 +165,7 @@ List of plugins
 .. _pyexcel-pdfr: https://github.com/pyexcel/pyexcel-pdfr
 
 .. _pyexcel-xlsxw: https://github.com/pyexcel/pyexcel-xlsxw
+.. _pyexcel-libxlsxw: https://github.com/pyexcel/pyexcel-libxlsxw
 .. _pyexcel-xlsxr: https://github.com/pyexcel/pyexcel-xlsxr
 .. _pyexcel-xlsbr: https://github.com/pyexcel/pyexcel-xlsbr
 .. _pyexcel-htmlr: https://github.com/pyexcel/pyexcel-htmlr
@@ -152,6 +176,7 @@ List of plugins
 .. _XlsxWriter: https://github.com/jmcnamara/XlsxWriter
 .. _pyexcel-ezodf: https://github.com/pyexcel/pyexcel-ezodf
 .. _odfpy: https://github.com/eea/odfpy
+.. _libxlsxwriter: http://libxlsxwriter.github.io/getting_started.html
 
 .. table:: Other data renderers
 
@@ -184,13 +209,6 @@ List of plugins
 .. _csvtotable: https://github.com/vividvilla/csvtotable
 .. _pyexcel-gantt: https://github.com/pyexcel/pyexcel-gantt
 .. _frappe-gantt: https://github.com/frappe/gantt
-
-In order to manage the list of plugins installed, you need to use pip to add or remove
-a plugin. When you use virtualenv, you can have different plugins per virtual
-environment. In the situation where you have multiple plugins that does the same thing
-in your environment, you need to tell pyexcel which plugin to use per function call.
-For example, pyexcel-ods and pyexcel-odsr, and you want to get_array to use pyexcel-odsr.
-You need to append get_array(..., library='pyexcel-odsr').
 
 .. rubric:: Footnotes
 
