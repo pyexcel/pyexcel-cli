@@ -35,6 +35,8 @@ def _make_single_character(single_char_input):
     if sys.version_info[0] == 2:
         return single_char_input.encode('ascii')
     else:
+        if len(single_char_input) != 1:
+            raise click.BadParameter("must be a single character")
         return single_char_input[0]
 
 
